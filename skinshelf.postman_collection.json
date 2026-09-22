@@ -1,0 +1,147 @@
+{
+  "info": {
+    "name": "SkinShelf API — PEC 5",
+    "description": "Colección para probar el CRUD de productos de skincare. Importable en Postman o Thunder Client. Cambia la variable {{base}} por tu URL local o de producción, y {{id}} por el _id de un producto creado.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base", "value": "http://localhost:4000" },
+    { "key": "id", "value": "REEMPLAZA_POR_UN_ID" }
+  ],
+  "item": [
+    {
+      "name": "CRUD",
+      "item": [
+        {
+          "name": "Estado de la API",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base}}/", "host": ["{{base}}"], "path": [""] }
+          }
+        },
+        {
+          "name": "Listar productos",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base}}/api/productos", "host": ["{{base}}"], "path": ["api", "productos"] }
+          }
+        },
+        {
+          "name": "Listar por categoria (serum)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base}}/api/productos?categoria=serum",
+              "host": ["{{base}}"],
+              "path": ["api", "productos"],
+              "query": [{ "key": "categoria", "value": "serum" }]
+            }
+          }
+        },
+        {
+          "name": "Listar por estado (en uso)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base}}/api/productos?estado=en uso",
+              "host": ["{{base}}"],
+              "path": ["api", "productos"],
+              "query": [{ "key": "estado", "value": "en uso" }]
+            }
+          }
+        },
+        {
+          "name": "Crear producto",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Zero Pore Pad 2.0\",\n  \"marca\": \"Medicube\",\n  \"categoria\": \"tonico\",\n  \"ingredienteClave\": \"PHA + ácido láctico\",\n  \"momentoUso\": \"noche\",\n  \"precio\": 29.9,\n  \"fechaApertura\": \"2026-09-01\",\n  \"estado\": \"en uso\",\n  \"puntuacion\": 5,\n  \"notas\": \"Dos veces por semana, no a diario.\"\n}"
+            },
+            "url": { "raw": "{{base}}/api/productos", "host": ["{{base}}"], "path": ["api", "productos"] }
+          }
+        },
+        {
+          "name": "Obtener producto por id",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base}}/api/productos/{{id}}", "host": ["{{base}}"], "path": ["api", "productos", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Actualizar producto",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"terminado\",\n  \"puntuacion\": 4\n}"
+            },
+            "url": { "raw": "{{base}}/api/productos/{{id}}", "host": ["{{base}}"], "path": ["api", "productos", "{{id}}"] }
+          }
+        },
+        {
+          "name": "Eliminar producto",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{base}}/api/productos/{{id}}", "host": ["{{base}}"], "path": ["api", "productos", "{{id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Casos que deben fallar",
+      "item": [
+        {
+          "name": "Sin nombre (espera 400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"marca\": \"Medicube\",\n  \"categoria\": \"serum\"\n}" },
+            "url": { "raw": "{{base}}/api/productos", "host": ["{{base}}"], "path": ["api", "productos"] }
+          }
+        },
+        {
+          "name": "Categoria invalida (espera 400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Producto inventado\",\n  \"marca\": \"Marca X\",\n  \"categoria\": \"categoria-que-no-existe\"\n}" },
+            "url": { "raw": "{{base}}/api/productos", "host": ["{{base}}"], "path": ["api", "productos"] }
+          }
+        },
+        {
+          "name": "Puntuacion fuera de rango (espera 400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Producto con nota 10\",\n  \"marca\": \"Marca X\",\n  \"categoria\": \"serum\",\n  \"puntuacion\": 10\n}" },
+            "url": { "raw": "{{base}}/api/productos", "host": ["{{base}}"], "path": ["api", "productos"] }
+          }
+        },
+        {
+          "name": "Id mal formado (espera 400)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base}}/api/productos/123", "host": ["{{base}}"], "path": ["api", "productos", "123"] }
+          }
+        },
+        {
+          "name": "Id inexistente (espera 404)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base}}/api/productos/000000000000000000000000", "host": ["{{base}}"], "path": ["api", "productos", "000000000000000000000000"] }
+          }
+        },
+        {
+          "name": "Ruta inexistente (espera 404)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base}}/api/no-existe", "host": ["{{base}}"], "path": ["api", "no-existe"] }
+          }
+        }
+      ]
+    }
+  ]
+}

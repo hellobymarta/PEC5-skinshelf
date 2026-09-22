@@ -1,0 +1,35 @@
+# ⚠️ RENOMBRA ESTE ARCHIVO A  .gitattributes  EN LA RAÍZ DEL PROYECTO
+
+# Normaliza los finales de línea: evita que un mismo archivo aparezca
+# como "modificado entero" al pasar de Windows a macOS/Linux.
+* text=auto eol=lf
+
+# Archivos de texto del proyecto
+*.js      text eol=lf
+*.jsx     text eol=lf
+*.json    text eol=lf
+*.md      text eol=lf
+*.css     text eol=lf
+*.html    text eol=lf
+*.http    text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+
+# Scripts de Windows
+*.bat     text eol=crlf
+*.cmd     text eol=crlf
+
+# Binarios: Git no debe tocarlos
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.webp    binary
+*.ico     binary
+*.pdf     binary
+*.woff    binary
+*.woff2   binary
+
+# No contar estos archivos en las estadísticas de lenguaje del repo
+package-lock.json  linguist-generated=true
+*.postman_collection.json  linguist-language=JSON

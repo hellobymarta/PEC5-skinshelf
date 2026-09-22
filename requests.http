@@ -1,0 +1,107 @@
+### SkinShelf — Pruebas de la API (extensión REST Client de VS Code)
+### Cambia @base por tu URL local o la de producción.
+
+@base = http://localhost:4000
+# @base = https://skinshelf-api.onrender.com
+
+### 1. Estado de la API
+GET {{base}}/
+
+### 2. Listar todos los productos
+GET {{base}}/api/productos
+
+### 3. Listar filtrando por categoría
+GET {{base}}/api/productos?categoria=serum
+
+### 4. Listar filtrando por estado
+GET {{base}}/api/productos?estado=en uso
+
+### 5. Crear un producto
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Zero Pore Pad 2.0",
+  "marca": "Medicube",
+  "categoria": "tonico",
+  "ingredienteClave": "PHA + ácido láctico",
+  "momentoUso": "noche",
+  "precio": 29.9,
+  "fechaApertura": "2026-09-01",
+  "estado": "en uso",
+  "puntuacion": 5,
+  "notas": "Dos veces por semana, no a diario."
+}
+
+### 6. Crear otro producto
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Relief Sun Rice + Probiotics",
+  "marca": "Beauty of Joseon",
+  "categoria": "protector solar",
+  "ingredienteClave": "extracto de arroz",
+  "momentoUso": "mañana",
+  "precio": 15.5,
+  "estado": "sin abrir"
+}
+
+### 7. Obtener un producto por id
+GET {{base}}/api/productos/REEMPLAZA_POR_UN_ID
+
+### 8. Actualizar un producto
+PUT {{base}}/api/productos/REEMPLAZA_POR_UN_ID
+Content-Type: application/json
+
+{
+  "estado": "terminado",
+  "puntuacion": 4
+}
+
+### 9. Eliminar un producto
+DELETE {{base}}/api/productos/REEMPLAZA_POR_UN_ID
+
+
+###############################################
+### CASOS QUE DEBEN FALLAR (validación)
+###############################################
+
+### 10. Falta el nombre → se espera 400
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "marca": "Medicube",
+  "categoria": "serum"
+}
+
+### 11. Categoría fuera del enum → se espera 400
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Producto inventado",
+  "marca": "Marca X",
+  "categoria": "categoria-que-no-existe"
+}
+
+### 12. Puntuación fuera de rango → se espera 400
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Producto con nota 10",
+  "marca": "Marca X",
+  "categoria": "serum",
+  "puntuacion": 10
+}
+
+### 13. Id con formato inválido → se espera 400 (no 500)
+GET {{base}}/api/productos/123
+
+### 14. Id bien formado pero inexistente → se espera 404
+GET {{base}}/api/productos/000000000000000000000000
+
+### 15. Ruta que no existe → se espera 404
+GET {{base}}/api/no-existe
