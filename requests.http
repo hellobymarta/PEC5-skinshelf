@@ -48,10 +48,10 @@ Content-Type: application/json
 }
 
 ### 7. Obtener un producto por id
-GET {{base}}/api/productos/REEMPLAZA_POR_UN_ID
+GET {{base}}/api/productos/6ab27676d1eda11865e21a32
 
 ### 8. Actualizar un producto
-PUT {{base}}/api/productos/REEMPLAZA_POR_UN_ID
+PUT {{base}}/api/productos/R6ab27676d1eda11865e21a32
 Content-Type: application/json
 
 {
@@ -60,7 +60,7 @@ Content-Type: application/json
 }
 
 ### 9. Eliminar un producto
-DELETE {{base}}/api/productos/REEMPLAZA_POR_UN_ID
+DELETE {{base}}/api/productos/6ab27676d1eda11865e21a32
 
 
 ###############################################
