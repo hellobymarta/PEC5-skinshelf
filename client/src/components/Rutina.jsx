@@ -131,7 +131,7 @@ function Rutina({ momento, productos }) {
                     src={foto}
                     alt=""
                     loading="lazy"
-                    className="h-12 w-12 shrink-0 rounded-lg bg-hueso object-contain p-1"
+                    className="h-[72px] w-[72px] shrink-0 rounded-lg bg-hueso object-contain p-1.5"
                   />
                 )}
 

@@ -24,12 +24,12 @@ function ProductoCard({ producto, onEditar, onEliminar }) {
   return (
     <article className="tarjeta flex flex-col gap-3 p-5">
       {foto && (
-        <div className="-mx-1 mb-1 flex h-36 items-center justify-center rounded-lg bg-hueso">
+        <div className="-mx-2 -mt-2 mb-1 flex aspect-square items-center justify-center rounded-lg bg-hueso">
           <img
             src={foto}
             alt={producto.nombre}
             loading="lazy"
-            className="h-full w-full object-contain p-3"
+            className="h-full w-full object-contain p-4"
           />
         </div>
       )}

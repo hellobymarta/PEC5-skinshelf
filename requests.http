@@ -120,3 +120,89 @@ Content-Type: application/json
 
 ### Borro el producto de la prueba
 DELETE {{base}}/api/productos/6ab7e407d22f26ab0f0a2683
+
+### Alta: limpiador
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "PDRN Hydrating Gel Cleanser",
+  "marca": "Medicube",
+  "categoria": "limpiador",
+  "ingredienteClave": "PDRN 99%",
+  "momentoUso": "ambos",
+  "precio": 24.9,
+  "estado": "en uso",
+  "puntuacion": 4,
+  "notas": "Gel suave, no reseca. Sirve para la primera y la segunda limpieza.",
+  "foto": "pdrn-hydrating-gel-cleanser.jpg"
+}
+
+### Alta: serum de manana
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Deep Vita C Capsule Serum",
+  "marca": "Medicube",
+  "categoria": "serum",
+  "ingredienteClave": "vitamina C + niacinamida 5%",
+  "momentoUso": "mañana",
+  "precio": 34.5,
+  "fechaApertura": "2026-09-10",
+  "estado": "en uso",
+  "puntuacion": 5,
+  "notas": "Solo de dia y siempre con protector solar despues.",
+  "foto": "deep-vita-c-capsule-serum.jpg"
+}
+
+### Alta: hidratante
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Collagen Jelly Cream",
+  "marca": "Medicube",
+  "categoria": "hidratante",
+  "ingredienteClave": "colageno",
+  "momentoUso": "ambos",
+  "precio": 20.5,
+  "fechaApertura": "2026-08-20",
+  "estado": "en uso",
+  "puntuacion": 5,
+  "notas": "Textura gel, se absorbe rapido. De noche una capa mas gruesa.",
+  "foto": "collagen-jelly-cream.jpg"
+}
+
+### Alta: mascarilla de noche
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Collagen Night Wrapping Mask",
+  "marca": "Medicube",
+  "categoria": "mascarilla",
+  "ingredienteClave": "colageno + ceramida NP",
+  "momentoUso": "noche",
+  "precio": 32.99,
+  "estado": "sin abrir",
+  "notas": "Se deja toda la noche y se retira por la manana.",
+  "foto": "collagen-night-wrapping-mask.jpg"
+}
+
+### Alta: protector solar de Medicube (opcional, si prefiero este al de Beauty of Joseon)
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Collagen Glow Sunscreen SPF50",
+  "marca": "Medicube",
+  "categoria": "protector solar",
+  "ingredienteClave": "colageno · SPF50",
+  "momentoUso": "mañana",
+  "precio": 26,
+  "estado": "en uso",
+  "puntuacion": 4,
+  "notas": "No deja el tono blanquecino de otros protectores.",
+  "foto": "collagen-glow-sunscreen.jpg"
+}
