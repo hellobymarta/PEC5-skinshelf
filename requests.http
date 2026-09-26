@@ -104,4 +104,19 @@ GET {{base}}/api/productos/123
 GET {{base}}/api/productos/000000000000000000000000
 
 ### 15. Ruta que no existe → se espera 404
-GET {{base}}/api/no-existe
+GET {{base}}/api/no-existe   
+
+
+### Prueba: mando un _id que no me corresponde
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Prueba de auditoria",
+  "marca": "Ninguna",
+  "categoria": "serum",
+  "_id": "aaaaaaaaaaaaaaaaaaaaaaaa"
+} 
+
+### Borro el producto de la prueba
+DELETE {{base}}/api/productos/aaaaaaaaaaaaaaaaaaaaaaaa

@@ -7,6 +7,15 @@ const { notFound, errorHandler } = require('./middlewares/errorHandler');
 
 const app = express();
 
+// Sin CORS_ORIGIN, el middleware de cors no llega a anadir ninguna cabecera y
+// el navegador bloquea todas las peticiones del frontend. La API arrancaria
+// igual y el fallo solo se veria en el navegador, asi que aviso aqui.
+if (!process.env.CORS_ORIGIN) {
+  console.warn(
+    'Falta CORS_ORIGIN en las variables de entorno: el navegador bloqueara las peticiones del frontend.'
+  );
+}
+
 app.use(cors({ origin: process.env.CORS_ORIGIN }));
 app.use(express.json());
 

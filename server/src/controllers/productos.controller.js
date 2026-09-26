@@ -1,6 +1,30 @@
 const mongoose = require('mongoose');
 const Producto = require('../models/Producto');
 
+// Los unicos campos que acepto del cliente. Sin esta lista, el req.body entero
+// llega al modelo y se puede colar un _id elegido a mano: lo comprobe mandando
+// "_id": "aaaa..." en un POST y el documento se creo con ese identificador.
+const CAMPOS_PERMITIDOS = [
+  'nombre',
+  'marca',
+  'categoria',
+  'ingredienteClave',
+  'momentoUso',
+  'precio',
+  'fechaApertura',
+  'estado',
+  'puntuacion',
+  'notas',
+];
+
+const soloCamposPermitidos = (cuerpo = {}) => {
+  const limpio = {};
+  CAMPOS_PERMITIDOS.forEach((campo) => {
+    if (cuerpo[campo] !== undefined) limpio[campo] = cuerpo[campo];
+  });
+  return limpio;
+};
+
 const listarProductos = async (req, res, next) => {
   try {
     const filtro = {};
@@ -33,7 +57,7 @@ const obtenerProducto = async (req, res, next) => {
 
 const crearProducto = async (req, res, next) => {
   try {
-    const producto = await Producto.create(req.body);
+    const producto = await Producto.create(soloCamposPermitidos(req.body));
     res.status(201).json(producto);
   } catch (error) {
     next(error);
@@ -46,10 +70,11 @@ const actualizarProducto = async (req, res, next) => {
       return res.status(400).json({ error: 'Id no válido' });
     }
 
-    const producto = await Producto.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const producto = await Producto.findByIdAndUpdate(
+      req.params.id,
+      soloCamposPermitidos(req.body),
+      { new: true, runValidators: true }
+    );
     if (!producto) {
       return res.status(404).json({ error: 'Producto no encontrado' });
     }
