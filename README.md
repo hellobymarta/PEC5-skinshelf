@@ -18,10 +18,12 @@ Proyecto de la **PEC 5 — Proyecto con IA**. Desarrollado con apoyo de herramie
 
 ## 📋 Descripción
 
-SkinShelf permite llevar el control de los productos de cuidado facial: registrarlos con su marca, categoría, ingrediente clave, precio y momento de uso; marcar en qué estado están (sin abrir, en uso, terminado); puntuarlos, editarlos y eliminarlos. Todo desde la interfaz, con los datos guardados en MongoDB Atlas.
+SkinShelf sirve para seguir la rutina de cuidado facial de cada día. Los productos se registran con su marca, categoría, ingrediente clave, precio y momento de uso, y a partir de ahí la aplicación arma dos rutinas, la de mañana y la de noche: solo los productos de ese momento, en el orden en que se aplican, para ir marcándolos según se usan. La pestaña de inventario mantiene el alta, la edición y el borrado, con los datos guardados en MongoDB Atlas.
 
 **Funcionalidades**
 
+- Rutina de mañana y de noche con los pasos ordenados y marcables
+- El marcado se reinicia cada día y no se guarda en la base de datos
 - Listado de productos con filtro por categoría y por estado
 - Alta de productos con validación en cliente y en servidor
 - Edición en el mismo formulario reutilizable
@@ -86,7 +88,7 @@ Códigos: `200` OK · `201` creado · `400` validación o id inválido · `404` 
 ## ⚙️ Instalación y ejecución
 
 ```bash
-git clone [URL del repositorio]
+git clone https://github.com/hellobymarta/skinshelf.git
 cd skinshelf
 ```
 
@@ -95,7 +97,7 @@ cd skinshelf
 ```bash
 cd server
 npm install
-cp .env.example .env     # rellena MONGODB_URI con tu cadena de Atlas
+cp .env.example .env     # con la cadena de conexión de Atlas
 npm run dev              # http://localhost:4000
 ```
 
@@ -141,8 +143,8 @@ Incluyen casos correctos y casos que deben fallar (categoría fuera del enum, id
 
 | Herramienta | Para qué |
 |---|---|
-| `[Claude Code / ChatGPT / Copilot...]` | Generación de modelo, controladores, rutas y componentes |
-| `[...]` | Explicación del código y resolución de errores |
+| Claude (aplicación de escritorio) | Generar el modelo, los controladores, las rutas, los middlewares y los componentes de React |
+| Claude (misma sesión) | Explicar el código generado, auditarlo y ayudarme a reproducir los fallos que encontré |
 
 ### Prompts principales
 
@@ -155,9 +157,11 @@ Los prompts completos y reutilizables están en **[`SKILLS.md`](./SKILLS.md)**. 
 
 ### Qué generó la IA
 
-- `[Modelo `Producto`, controlador, rutas y middlewares del backend]`
-- `[Servicio `api.js` y los componentes `ProductoList`, `ProductoCard`, `ProductoForm`]`
-- `[Configuración inicial de Tailwind y el scaffold de Vite]`
+- El modelo `Producto`, el controlador, las rutas y los middlewares del backend.
+- El servicio `api.js` y los componentes `ProductoList`, `ProductoCard` y `ProductoForm`.
+- La configuración inicial de Tailwind y el scaffold de Vite.
+- La vista de rutina (`Rutina.jsx`, `rutina.js`) y la pasada de rediseño.
+- Los archivos `requests.http` y la colección de Postman.
 
 ### Qué corregí yo y qué errores produjo la IA
 
@@ -183,7 +187,13 @@ Los prompts completos y reutilizables están en **[`SKILLS.md`](./SKILLS.md)**. 
   vulnerabilidades en esbuild/vite: solo son explotables contra el servidor de
   desarrollo local y la actualización a Vite 8 implica un cambio mayor de
   configuración. Decisión documentada, no silenciada.
-- `[...]`
+- Deducir el orden de los pasos de la categoría en vez de añadir un campo
+  `orden` al modelo: el orden lo marca el tipo de producto, no la persona.
+- Guardar el marcado del día en el navegador y no en MongoDB: es un dato del
+  día, no del producto, y en la base de datos habría obligado a un modelo nuevo
+  sin ganar nada.
+- Excluir de la rutina los productos terminados, y el protector solar de la
+  rutina de noche aunque esté marcado como «ambos».
 
 ---
 
@@ -191,27 +201,21 @@ Los prompts completos y reutilizables están en **[`SKILLS.md`](./SKILLS.md)**. 
 
 **Qué fue más rápido gracias a la IA**
 
-`[...]`
 
 **Qué fue más difícil de controlar**
 
-`[...]`
 
 **Qué errores aparecieron en el código generado**
 
-`[...]`
 
 **Qué tuve que modificar**
 
-`[...]`
 
 **Qué entendí mejor al revisar el código**
 
-`[...]`
 
 **¿Volvería a usar IA para una app similar? ¿Por qué?**
 
-`[...]`
 
 ---
 

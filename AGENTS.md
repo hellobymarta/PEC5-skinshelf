@@ -48,10 +48,12 @@ skinshelf/
     ├── package.json
     └── src/
         ├── services/api.js
+        ├── rutina.js            ← orden de los pasos y marcado del dia
         ├── components/
         │   ├── ProductoList.jsx
         │   ├── ProductoCard.jsx
-        │   └── ProductoForm.jsx
+        │   ├── ProductoForm.jsx
+        │   └── Rutina.jsx
         ├── App.jsx
         └── main.jsx
 ```
@@ -90,6 +92,10 @@ No crees carpetas ni archivos fuera de este árbol sin pedirlo antes.
 - Variables de entorno con `import.meta.env.VITE_*` (**no** `process.env`).
 - Estilos solo con clases de Tailwind; nada de CSS suelto ni estilos inline.
 - Responsive obligatorio: móvil primero, luego `sm:`, `md:`, `lg:`.
+- La lógica que no pinta nada (orden de los pasos, lectura del marcado) va en su
+  propio módulo, no dentro del componente.
+- Los colores y la tipografía salen de los tokens de `tailwind.config.js`; nada
+  de colores sueltos de la paleta por defecto de Tailwind.
 
 ---
 

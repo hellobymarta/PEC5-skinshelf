@@ -13,6 +13,8 @@ El objetivo académico es desarrollar un **CRUD completo de extremo a extremo** 
 - Una entidad principal: `Producto`.
 - CRUD completo desde la interfaz: listar, crear, editar y eliminar.
 - Filtro por categoría y por estado.
+- Vista de rutina de mañana y de noche: los productos de ese momento, ordenados
+  por el paso que ocupan, con marcado de lo ya aplicado.
 - Backend Node + Express + MongoDB Atlas (Mongoose).
 - Frontend React (Vite) + Tailwind, responsive.
 - Despliegue: API en Render, frontend en Vercel.
@@ -73,6 +75,8 @@ flowchart LR
 5. **Revisión crítica** — auditoría del código generado, corrección de errores, explicación línea a línea de las partes clave.
 6. **Despliegue** — Atlas + Render + Vercel, CORS de producción.
 7. **Documentación** — README con uso de IA, prompts, errores encontrados y reflexión.
+8. **Rediseño y vista de rutina** — pasada de diseño sobre la interfaz y las dos
+   vistas de rutina, sin tocar el modelo ni la API.
 
 ## Decisiones principales
 
@@ -84,6 +88,8 @@ flowchart LR
 | Tailwind | CSS a mano | Permite centrarse en la lógica y hacer el responsive rápido. |
 | Render para la API | Vercel serverless | Una API Express con conexión persistente a Mongo encaja mejor en un servicio siempre activo. |
 | Validaciones en modelo **y** en formulario | Solo en el frontend | La validación de cliente es comodidad; la de servidor es la que protege los datos. |
+| El orden de los pasos se deduce de `categoria` | Un campo `orden` en el modelo | El orden de aplicación lo marca el tipo de producto, no la persona. Un campo extra se podría quedar incoherente y no aporta nada. |
+| El marcado del día vive en el navegador | Guardarlo en MongoDB | Es un dato del día, no del producto: mañana la rutina vuelve a empezar. En la base de datos obligaría a un modelo nuevo sin ganar nada. |
 
 ## Riesgos identificados
 
