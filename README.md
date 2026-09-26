@@ -4,8 +4,6 @@ Mini aplicación fullstack para gestionar una estantería de productos de skinca
 
 Proyecto de la **PEC 5 — Proyecto con IA**. Desarrollado con apoyo de herramientas de inteligencia artificial, con todo el código revisado, probado y corregido manualmente.
 
-> ✍️ Los bloques marcados con `[...]` los tienes que completar tú al terminar. Todo lo demás ya está escrito.
-
 ---
 
 ## 🔗 Enlaces
@@ -163,14 +161,16 @@ Los prompts completos y reutilizables están en **[`SKILLS.md`](./SKILLS.md)**. 
 
 ### Qué corregí yo y qué errores produjo la IA
 
-> Rellena esta tabla con lo que te vaya pasando de verdad. Es lo que más puntúa.
-
-| # | Dónde | Error de la IA | Corrección |
+| # | Dónde | Error de la IA | Cómo lo detecté y corregí |
 |---|---|---|---|
-| 1 | `productos.controller.js` | `[...]` | `[...]` |
-| 2 | `ProductoForm.jsx` | `[...]` | `[...]` |
-| 3 | `services/api.js` | `[...]` | `[...]` |
-| 4 | `[...]` | `[...]` | `[...]` |
+| 1 | Repositorio (Git) | Afirmó que no había ningún `.DS_Store` rastreado tras comprobar solo la ruta `server/`, cuando el archivo estaba en la raíz y figuraba en el primer commit. | Lo detecté revisando la salida del `git commit` anterior. Le señalé la ruta real y lo sacó del índice con `git rm --cached`. |
+| 2 | Planificación del backend | Usó `MONGO_URI` en lugar de `MONGODB_URI`, el nombre real definido en `.env.example`, pese a haber leído los archivos del proyecto. | Lo detecté al contrastar su plan con el `.env.example`. Habría provocado un fallo de conexión silencioso. Le exigí usar los nombres literales del archivo. |
+| 3 | `ProductoForm.jsx` (diseño) | El diseño propuesto no incluía un `useEffect` para recargar los campos al cambiar `productoInicial`. | Lo detecté revisando el diseño antes de que generara el código. Sin él, al pulsar "Editar" en otro producto los campos conservarían los datos del anterior, porque `useState` solo toma el valor inicial en el primer render. |
+| 4 | `ProductoForm.jsx` (diseño) | No contemplaba que el backend devuelve `fechaApertura` en ISO completo y que `<input type="date">` solo acepta `yyyy-MM-dd`. | Lo detecté en la misma revisión. Sin el `.slice(0, 10)`, el campo de fecha aparecería vacío al editar aunque el producto tuviera fecha. |
+
+> Los errores 3 y 4 no producen ningún mensaje en consola: la aplicación
+> simplemente se comporta mal. Detectarlos exigió revisar el diseño antes de
+> generar el código, lo que resultó mucho más barato que depurarlos después.
 
 ### Decisiones que tomé yo
 
@@ -179,13 +179,15 @@ Los prompts completos y reutilizables están en **[`SKILLS.md`](./SKILLS.md)**. 
 - Descartar autenticación y subida de imágenes para centrar el alcance.
 - Usar `fetch` en vez de axios y mantener el backend en CommonJS.
 - La gestión de variables de entorno y el contenido del `.gitignore`.
+- Mantener Vite 5 y Tailwind 3 pese a que `npm audit` reporta dos
+  vulnerabilidades en esbuild/vite: solo son explotables contra el servidor de
+  desarrollo local y la actualización a Vite 8 implica un cambio mayor de
+  configuración. Decisión documentada, no silenciada.
 - `[...]`
 
 ---
 
 ## 💭 Reflexión
-
-> Escríbela tú, en primera persona. Estas preguntas son las que pide el enunciado; úsalas como guion, no como formulario.
 
 **Qué fue más rápido gracias a la IA**
 

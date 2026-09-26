@@ -1,5 +1,3 @@
-# ⚠️ RENOMBRA ESTE ARCHIVO A  .gitattributes  EN LA RAÍZ DEL PROYECTO
-
 # Normaliza los finales de línea: evita que un mismo archivo aparezca
 # como "modificado entero" al pasar de Windows a macOS/Linux.
 * text=auto eol=lf

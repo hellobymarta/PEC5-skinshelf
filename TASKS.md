@@ -8,47 +8,47 @@ Estados: ⬜ pendiente · 🔄 en curso · ✅ hecho
 
 ## Fase 0 · Planificación
 
-- ⬜ Elegir la idea y comprobar que es distinta al proyecto anterior
-- ⬜ Definir la entidad `Producto` y sus campos
-- ⬜ Escribir `PLAN.md`
-- ⬜ Escribir `AGENTS.md` con las convenciones del proyecto
-- ⬜ Crear el repositorio, `.gitignore` y `.gitattributes`
-- ⬜ Primer commit con la documentación
+- ✅ Elegir la idea y comprobar que es distinta al proyecto anterior
+- ✅ Definir la entidad `Producto` y sus campos
+- ✅ Escribir `PLAN.md`
+- ✅ Escribir `AGENTS.md` con las convenciones del proyecto
+- ✅ Crear el repositorio, `.gitignore` y `.gitattributes`
+- ✅ Primer commit con la documentación
 
 ## Fase 1 · Backend
 
-- ⬜ Inicializar `server/` con Express y las dependencias mínimas
-- ⬜ Conexión a MongoDB Atlas (`config/db.js`) con variables de entorno
-- ⬜ Modelo `Producto` con Mongoose y validaciones (enums, min/max, maxlength)
-- ⬜ Controlador: `listarProductos` con filtros `?categoria=` y `?estado=`
-- ⬜ Controlador: `obtenerProducto` con validación de ObjectId
-- ⬜ Controlador: `crearProducto`
-- ⬜ Controlador: `actualizarProducto` con `new: true` y `runValidators: true`
-- ⬜ Controlador: `eliminarProducto`
-- ⬜ Rutas `/api/productos`
-- ⬜ Middlewares `notFound` (404) y `errorHandler` (400/500)
-- ⬜ `server/.env.example` y comprobación de que `.env` está ignorado
+- ✅ Inicializar `server/` con Express y las dependencias mínimas
+- ✅ Conexión a MongoDB Atlas (`config/db.js`) con variables de entorno
+- ✅ Modelo `Producto` con Mongoose y validaciones (enums, min/max, maxlength)
+- ✅ Controlador: `listarProductos` con filtros `?categoria=` y `?estado=`
+- ✅ Controlador: `obtenerProducto` con validación de ObjectId
+- ✅ Controlador: `crearProducto`
+- ✅ Controlador: `actualizarProducto` con `new: true` y `runValidators: true`
+- ✅ Controlador: `eliminarProducto`
+- ✅ Rutas `/api/productos`
+- ✅ Middlewares `notFound` (404) y `errorHandler` (400/500)
+- ✅ `server/.env.example` y comprobación de que `.env` está ignorado
 
 ## Fase 2 · Pruebas de la API
 
-- ⬜ `requests.http` con los cinco endpoints
-- ⬜ Colección de Postman equivalente
-- ⬜ Probar caso inválido: categoría fuera del enum → debe dar **400**
-- ⬜ Probar id inexistente → debe dar **404**
-- ⬜ Probar id mal formado → debe dar **400**, no 500
-- ⬜ Comprobar en Atlas que los documentos se guardan de verdad
+- ✅ `requests.http` con los cinco endpoints
+- ✅ Colección de Postman equivalente
+- ✅ Probar caso inválido: categoría fuera del enum → debe dar **400**
+- ✅ Probar id inexistente → debe dar **404**
+- ✅ Probar id mal formado → debe dar **400**, no 500
+- ✅ Comprobar en Atlas que los documentos se guardan de verdad
 
 ## Fase 3 · Frontend
 
-- ⬜ Scaffold Vite + React + Tailwind
-- ⬜ `client/.env.example` con `VITE_API_URL`
-- ⬜ `services/api.js` con las cinco llamadas
-- ⬜ `ProductoCard.jsx` con badge de categoría y puntuación
-- ⬜ `ProductoList.jsx` en grid responsive
-- ⬜ `ProductoForm.jsx` reutilizable para crear y editar
-- ⬜ `App.jsx`: estados, `useEffect`, handlers y filtro por categoría
-- ⬜ Estados de carga, error y lista vacía
-- ⬜ Eliminar con confirmación
+- ✅ Scaffold Vite + React + Tailwind
+- ✅ `client/.env.example` con `VITE_API_URL`
+- ✅ `services/api.js` con las cinco llamadas
+- ✅ `ProductoCard.jsx` con badge de categoría y puntuación
+- ✅ `ProductoList.jsx` en grid responsive
+- ✅ `ProductoForm.jsx` reutilizable para crear y editar
+- ✅ `App.jsx`: estados, `useEffect`, handlers y filtro por categoría
+- ✅ Estados de carga, error y lista vacía
+- ✅ Eliminar con confirmación
 - ⬜ Repaso de responsive en móvil, tablet y escritorio
 
 ## Fase 4 · Revisión crítica
