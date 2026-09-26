@@ -152,9 +152,13 @@ function App() {
               <p className="rounded-md bg-red-50 text-red-700 text-sm px-3 py-2">{error}</p>
             )}
 
-            {cargando ? (
+            {cargando && (
               <p className="text-center text-gray-500 py-12">Cargando productos...</p>
-            ) : (
+            )}
+
+            {/* Si la carga fallo no enseno el listado: con la lista vacia saldria
+                "aun no hay productos", que contradice al mensaje de error. */}
+            {!cargando && !error && (
               <ProductoList
                 productos={productos}
                 onEditar={abrirFormularioEditar}
