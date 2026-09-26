@@ -49,33 +49,33 @@ Estados: ⬜ pendiente · 🔄 en curso · ✅ hecho
 - ✅ `App.jsx`: estados, `useEffect`, handlers y filtro por categoría
 - ✅ Estados de carga, error y lista vacía
 - ✅ Eliminar con confirmación
-- ⬜ Repaso de responsive en móvil, tablet y escritorio
+- ✅ Repaso de responsive en móvil, tablet y escritorio
 
 ## Fase 4 · Revisión crítica
 
-- ⬜ Pedir a la IA que explique el controlador de update y el `useEffect`
-- ⬜ Auditoría de seguridad y validaciones
-- ⬜ Verificar uno a uno los problemas que señale (descartar los inventados)
-- ⬜ Corregir lo que sea real
-- ⬜ Anotar los errores encontrados en el cuaderno de errores
+- ✅ Pedir a la IA que explique el controlador de update y el `useEffect`
+- ✅ Auditoría de seguridad y validaciones
+- ✅ Verificar uno a uno los problemas que señale (descartar los inventados)
+- ✅ Corregir lo que sea real
+- ✅ Anotar los errores encontrados en el cuaderno de errores
 
 ## Fase 5 · Despliegue
 
-- ⬜ Cluster en MongoDB Atlas + usuario + acceso de red
-- ⬜ API desplegada en Render con sus variables de entorno
-- ⬜ CORS configurado con el dominio del frontend (no `*`)
-- ⬜ Frontend desplegado en Vercel con `VITE_API_URL` de producción
-- ⬜ Comprobar el CRUD completo contra producción
-- ⬜ Actualizar `requests.http` y Postman con la URL de producción
+- ✅ Cluster en MongoDB Atlas + usuario + acceso de red
+- ✅ API desplegada en Vercel con sus variables de entorno
+- ✅ CORS configurado con el dominio del frontend (no `*`)
+- ✅ Frontend desplegado en Vercel con `VITE_API_URL` de producción
+- ✅ Comprobar el CRUD completo contra producción
+- ✅ Actualizar `requests.http` y Postman con la URL de producción
 
 ## Fase 6 · Documentación y entrega
 
-- ⬜ `SKILLS.md` con los prompts realmente usados
-- ⬜ `README.md`: descripción, instalación, uso de IA y prompts principales
+- ✅ `SKILLS.md` con los prompts realmente usados
+- ✅ `README.md`: descripción, instalación, uso de IA y prompts principales
 - ⬜ Reflexión final escrita a mano
 - ⬜ `TASKS.md` actualizado a su estado real
-- ⬜ Repaso del historial de commits
-- ⬜ Comprobar que `.env` no está en el repositorio
+- ✅ Repaso del historial de commits
+- ✅ Comprobar que `.env` no está en el repositorio
 - ⬜ Entrega en Google Classroom con las dos URLs y el enlace al repo
 
 ---
@@ -84,4 +84,6 @@ Estados: ⬜ pendiente · 🔄 en curso · ✅ hecho
 
 | # | Descripción | Estado |
 |---|---|---|
-| | | |
+| 1 | El campo `foto` no se guardaba: la API seguía con el modelo viejo cargado en memoria. | Cerrada: reiniciar el servidor |
+| 2 | Primer despliegue de la API en Vercel vacío por dejar el *Root Directory* en la raíz. | Cerrada: apuntarlo a `server` |
+| 3 | La API desplegada sin `CORS_ORIGIN`: el navegador bloqueaba todas las peticiones. | Cerrada: variable creada con la URL del frontend |

@@ -10,8 +10,8 @@ Proyecto de la **PEC 5 — Proyecto con IA**. Desarrollado con apoyo de herramie
 
 | | URL |
 |---|---|
-| Frontend | `[URL de Vercel]` |
-| API | `[URL de la API en Vercel]` |
+| Frontend | https://pec-5-skinshelf-web.vercel.app |
+| API | https://pec-5-skinshelf.vercel.app |
 | Repositorio | https://github.com/hellobymarta/PEC5-skinshelf |
 
 ---
