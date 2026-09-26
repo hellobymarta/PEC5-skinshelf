@@ -3,14 +3,16 @@ import ProductoCard from './ProductoCard';
 function ProductoList({ productos, onEditar, onEliminar }) {
   if (productos.length === 0) {
     return (
-      <p className="text-center text-gray-500 py-12">
-        Aún no hay productos. Añade el primero para empezar tu estantería.
-      </p>
+      <div className="tarjeta p-10 text-center">
+        <p className="text-sm text-suave">
+          No hay productos que coincidan con lo que buscas.
+        </p>
+      </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {productos.map((producto) => (
         <ProductoCard
           key={producto._id}

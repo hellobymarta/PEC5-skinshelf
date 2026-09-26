@@ -119,4 +119,4 @@ Content-Type: application/json
 } 
 
 ### Borro el producto de la prueba
-DELETE {{base}}/api/productos/aaaaaaaaaaaaaaaaaaaaaaaa
+DELETE {{base}}/api/productos/6ab7e407d22f26ab0f0a2683

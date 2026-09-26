@@ -57,12 +57,12 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
   return (
     <form onSubmit={manejarEnvio} className="flex flex-col gap-4">
       {error && (
-        <p className="rounded-md bg-red-50 text-red-700 text-sm px-3 py-2">{error}</p>
+        <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+          <label className="etiqueta mb-1.5 block">Nombre</label>
           <input
             type="text"
             name="nombre"
@@ -70,30 +70,30 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
             onChange={manejarCambio}
             required
             maxLength={80}
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+            className="campo"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Marca</label>
+          <label className="etiqueta mb-1.5 block">Marca</label>
           <input
             type="text"
             name="marca"
             value={valores.marca}
             onChange={manejarCambio}
             required
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+            className="campo"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Categoría</label>
+          <label className="etiqueta mb-1.5 block">Categoría</label>
           <select
             name="categoria"
             value={valores.categoria}
             onChange={manejarCambio}
             required
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+            className="campo"
           >
             <option value="" disabled>
               Selecciona una categoría
@@ -109,7 +109,7 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="etiqueta mb-1.5 block">
             Ingrediente clave
           </label>
           <input
@@ -118,19 +118,19 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
             value={valores.ingredienteClave}
             onChange={manejarCambio}
             placeholder="ej. niacinamida 5%"
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+            className="campo"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="etiqueta mb-1.5 block">
             Momento de uso
           </label>
           <select
             name="momentoUso"
             value={valores.momentoUso}
             onChange={manejarCambio}
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+            className="campo"
           >
             <option value="mañana">mañana</option>
             <option value="noche">noche</option>
@@ -139,7 +139,7 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Precio (€)</label>
+          <label className="etiqueta mb-1.5 block">Precio (€)</label>
           <input
             type="number"
             name="precio"
@@ -147,12 +147,12 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
             onChange={manejarCambio}
             min={0}
             step="0.01"
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+            className="campo"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="etiqueta mb-1.5 block">
             Fecha de apertura
           </label>
           <input
@@ -160,17 +160,17 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
             name="fechaApertura"
             value={valores.fechaApertura}
             onChange={manejarCambio}
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+            className="campo"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+          <label className="etiqueta mb-1.5 block">Estado</label>
           <select
             name="estado"
             value={valores.estado}
             onChange={manejarCambio}
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+            className="campo"
           >
             <option value="sin abrir">sin abrir</option>
             <option value="en uso">en uso</option>
@@ -179,7 +179,7 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="etiqueta mb-1.5 block">
             Puntuación (1-5)
           </label>
           <input
@@ -189,35 +189,35 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
             onChange={manejarCambio}
             min={1}
             max={5}
-            className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+            className="campo"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Notas</label>
+        <label className="etiqueta mb-1.5 block">Notas</label>
         <textarea
           name="notas"
           value={valores.notas}
           onChange={manejarCambio}
           maxLength={300}
           rows={3}
-          className="w-full rounded-md border border-gray-300 px-3 py-1.5"
+          className="campo"
         />
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 pt-2">
         <button
           type="submit"
           disabled={enviando}
-          className="flex-1 rounded-md bg-gray-900 text-white text-sm py-2 hover:bg-gray-700 disabled:opacity-50"
+          className="boton flex-1"
         >
-          {enviando ? 'Guardando...' : 'Guardar'}
+          {enviando ? 'Guardando…' : 'Guardar'}
         </button>
         <button
           type="button"
           onClick={onCancelar}
-          className="flex-1 rounded-md border border-gray-300 text-sm py-2 hover:bg-gray-50"
+          className="boton-suave flex-1"
         >
           Cancelar
         </button>

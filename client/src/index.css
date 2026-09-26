@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-hueso text-tinta antialiased;
+  }
+}
+
+@layer components {
+  /* Etiqueta pequena en mayusculas, muy espaciada. */
+  .etiqueta {
+    @apply text-[11px] uppercase tracking-[0.18em] text-suave;
+  }
+
+  .campo {
+    @apply w-full rounded-lg border border-borde bg-nieve px-3 py-2 text-sm
+           placeholder:text-suave focus:border-acento focus:outline-none
+           focus:ring-2 focus:ring-acento/15;
+  }
+
+  .boton {
+    @apply rounded-lg bg-tinta px-4 py-2 text-sm font-medium text-nieve
+           transition hover:bg-tinta/85 disabled:opacity-40;
+  }
+
+  .boton-suave {
+    @apply rounded-lg border border-borde bg-nieve px-4 py-2 text-sm
+           transition hover:bg-hueso;
+  }
+
+  .tarjeta {
+    @apply rounded-xl border border-borde bg-nieve;
+  }
+}
