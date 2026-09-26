@@ -17,7 +17,7 @@ El objetivo académico es desarrollar un **CRUD completo de extremo a extremo** 
   por el paso que ocupan, con marcado de lo ya aplicado.
 - Backend Node + Express + MongoDB Atlas (Mongoose).
 - Frontend React (Vite) + Tailwind, responsive.
-- Despliegue: API en Render, frontend en Vercel.
+- Despliegue: dos proyectos de Vercel sobre el mismo repositorio, uno para la API y otro para el frontend.
 - Pruebas de la API con `.http` y colección de Postman.
 
 **Fuera del alcance (decisión consciente)**
@@ -73,7 +73,7 @@ flowchart LR
 3. **Pruebas de API** — `requests.http` y colección de Postman, incluyendo casos que deben fallar.
 4. **Frontend** — servicio de API, listado, formulario reutilizable (crear/editar), eliminación con confirmación, filtros y responsive.
 5. **Revisión crítica** — auditoría del código generado, corrección de errores, explicación línea a línea de las partes clave.
-6. **Despliegue** — Atlas + Render + Vercel, CORS de producción.
+6. **Despliegue** — Atlas + dos proyectos de Vercel, CORS de producción.
 7. **Documentación** — README con uso de IA, prompts, errores encontrados y reflexión.
 8. **Rediseño y vista de rutina** — pasada de diseño sobre la interfaz y las dos
    vistas de rutina, sin tocar el modelo ni la API.
@@ -83,10 +83,10 @@ flowchart LR
 | Decisión | Alternativa descartada | Motivo |
 |---|---|---|
 | Entidad "producto de skincare" | Reutilizar la idea de viajes (Vagamundo) | La PEC pide un proyecto distinto y esta entidad tiene campos variados (enums, fecha, número, rango) que obligan a trabajar validaciones de verdad. |
-| CommonJS en el backend | ESM | Es lo visto en la asignatura y evita problemas de configuración en Render. |
+| CommonJS en el backend | ESM | Es lo visto en la asignatura y evita problemas de configuración al desplegar. |
 | `fetch` nativo en el frontend | axios | Una dependencia menos y es lo que pide la asignatura. |
 | Tailwind | CSS a mano | Permite centrarse en la lógica y hacer el responsive rápido. |
-| Render para la API | Vercel serverless | Una API Express con conexión persistente a Mongo encaja mejor en un servicio siempre activo. |
+| Vercel para la API y para el frontend | Render para la API | Ya tenía cuenta en Vercel del proyecto anterior, y así las dos partes viven en la misma plataforma. El precio es que la API pasa a ser una función serverless: no hay un proceso siempre encendido, así que la conexión con Atlas hay que cachearla en una variable global y abrirla en la primera petición en vez de al arrancar. |
 | Validaciones en modelo **y** en formulario | Solo en el frontend | La validación de cliente es comodidad; la de servidor es la que protege los datos. |
 | El orden de los pasos se deduce de `categoria` | Un campo `orden` en el modelo | El orden de aplicación lo marca el tipo de producto, no la persona. Un campo extra se podría quedar incoherente y no aporta nada. |
 | El marcado del día vive en el navegador | Guardarlo en MongoDB | Es un dato del día, no del producto: mañana la rutina vuelve a empezar. En la base de datos obligaría a un modelo nuevo sin ganar nada. |

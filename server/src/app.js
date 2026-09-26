@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const productosRoutes = require('./routes/productos.routes');
+const conectarDB = require('./config/db');
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
 
 const app = express();
@@ -23,7 +24,24 @@ app.get('/', (req, res) => {
   res.json({ ok: true, mensaje: 'API SkinShelf' });
 });
 
-app.use('/api/productos', productosRoutes);
+// En local la conexion la abre server.js al arrancar; en Vercel no hay arranque,
+// asi que la abro aqui antes de las rutas de datos. Como esta cacheada, solo se
+// conecta de verdad la primera vez.
+const conMongo = async (req, res, next) => {
+  try {
+    await conectarDB();
+    next();
+  } catch (error) {
+    res.status(503).json({
+      error: 'No he podido conectar con la base de datos.',
+      detalle: error.message,
+    });
+  }
+};
+
+// La ruta de estado va antes y a proposito no pasa por conMongo: asi distingo
+// "la API no responde" de "la API responde pero no llega a Mongo".
+app.use('/api/productos', conMongo, productosRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

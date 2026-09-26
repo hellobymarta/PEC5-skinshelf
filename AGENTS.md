@@ -20,7 +20,7 @@ Lee siempre `PLAN.md` antes de escribir código. La definición de la entidad y 
 | Base de datos | MongoDB Atlas (cluster gratuito M0) |
 | Frontend | React 18 + Vite, Tailwind CSS 3 |
 | HTTP | `fetch` nativo (**no** axios) |
-| Despliegue | API en Render · frontend en Vercel |
+| Despliegue | Dos proyectos de Vercel: `server` (funciones) y `client` (estático) |
 
 ---
 

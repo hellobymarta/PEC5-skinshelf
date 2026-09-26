@@ -11,7 +11,7 @@ Proyecto de la **PEC 5 — Proyecto con IA**. Desarrollado con apoyo de herramie
 | | URL |
 |---|---|
 | Frontend | `[URL de Vercel]` |
-| API | `[URL de Render]` |
+| API | `[URL de la API en Vercel]` |
 | Repositorio | https://github.com/hellobymarta/PEC5-skinshelf |
 
 ---
@@ -40,7 +40,7 @@ SkinShelf sirve para seguir la rutina de cuidado facial de cada día. Los produc
 | Backend | Node.js · Express · Mongoose |
 | Base de datos | MongoDB Atlas |
 | Frontend | React (Vite) · Tailwind CSS |
-| Despliegue | Render (API) · Vercel (frontend) |
+| Despliegue | Vercel (dos proyectos: API y frontend) |
 
 ```mermaid
 flowchart LR
