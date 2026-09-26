@@ -12,7 +12,7 @@ Proyecto de la **PEC 5 — Proyecto con IA**. Desarrollado con apoyo de herramie
 |---|---|
 | Frontend | `[URL de Vercel]` |
 | API | `[URL de Render]` |
-| Repositorio | `[URL de GitHub]` |
+| Repositorio | https://github.com/hellobymarta/PEC5-skinshelf |
 
 ---
 
@@ -88,7 +88,7 @@ Códigos: `200` OK · `201` creado · `400` validación o id inválido · `404` 
 ## ⚙️ Instalación y ejecución
 
 ```bash
-git clone https://github.com/hellobymarta/skinshelf.git
+git clone https://github.com/hellobymarta/PEC5-skinshelf.git
 cd skinshelf
 ```
 
