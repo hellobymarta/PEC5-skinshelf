@@ -11,6 +11,7 @@ const construirEstadoInicial = (producto) => ({
   estado: producto?.estado ?? 'sin abrir',
   puntuacion: producto?.puntuacion ?? '',
   notas: producto?.notas ?? '',
+  foto: producto?.foto ?? '',
 });
 
 const construirDatosParaGuardar = (valores) => ({
@@ -24,6 +25,7 @@ const construirDatosParaGuardar = (valores) => ({
   estado: valores.estado,
   puntuacion: valores.puntuacion === '' ? undefined : Number(valores.puntuacion),
   notas: valores.notas.trim() || undefined,
+  foto: valores.foto.trim() || undefined,
 });
 
 function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
@@ -192,6 +194,21 @@ function ProductoForm({ productoInicial, onGuardar, onCancelar }) {
             className="campo"
           />
         </div>
+      </div>
+
+      <div>
+        <label className="etiqueta mb-1.5 block">Foto</label>
+        <input
+          type="text"
+          name="foto"
+          value={valores.foto}
+          onChange={manejarCambio}
+          placeholder="collagen-jelly-cream.jpg"
+          className="campo"
+        />
+        <p className="mt-1.5 text-sm text-suave">
+          Nombre del archivo guardado en <code>public/fotos</code>.
+        </p>
       </div>
 
       <div>

@@ -1,3 +1,5 @@
+import { rutaFoto } from '../foto';
+
 const Estrellas = ({ puntuacion }) => (
   <span className="text-dia" aria-label={`Puntuación: ${puntuacion} de 5`}>
     {Array.from({ length: 5 }, (_, i) => (i < puntuacion ? '★' : '☆')).join('')}
@@ -17,8 +19,21 @@ const ESTILO_MOMENTO = {
 };
 
 function ProductoCard({ producto, onEditar, onEliminar }) {
+  const foto = rutaFoto(producto.foto);
+
   return (
     <article className="tarjeta flex flex-col gap-3 p-5">
+      {foto && (
+        <div className="-mx-1 mb-1 flex h-36 items-center justify-center rounded-lg bg-hueso">
+          <img
+            src={foto}
+            alt={producto.nombre}
+            loading="lazy"
+            className="h-full w-full object-contain p-3"
+          />
+        </div>
+      )}
+
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="etiqueta">{producto.categoria}</p>

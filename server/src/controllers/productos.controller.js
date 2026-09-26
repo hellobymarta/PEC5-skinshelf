@@ -15,6 +15,7 @@ const CAMPOS_PERMITIDOS = [
   'estado',
   'puntuacion',
   'notas',
+  'foto',
 ];
 
 const soloCamposPermitidos = (cuerpo = {}) => {

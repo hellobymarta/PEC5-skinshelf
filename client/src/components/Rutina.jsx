@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MOMENTOS, pasosDelMomento, leerMarcados, guardarMarcados } from '../rutina';
+import { rutaFoto } from '../foto';
 
 const Sol = () => (
   <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -101,6 +102,7 @@ function Rutina({ momento, productos }) {
       <ol className="flex flex-col gap-2">
         {pasos.map((paso, indice) => {
           const hecho = hechos.includes(paso._id);
+          const foto = rutaFoto(paso.foto);
 
           return (
             <li key={paso._id}>
@@ -123,6 +125,15 @@ function Rutina({ momento, productos }) {
                 >
                   {hecho ? '✓' : indice + 1}
                 </span>
+
+                {foto && (
+                  <img
+                    src={foto}
+                    alt=""
+                    loading="lazy"
+                    className="h-12 w-12 shrink-0 rounded-lg bg-hueso object-contain p-1"
+                  />
+                )}
 
                 <span className="min-w-0 flex-1">
                   <span className="etiqueta block">{paso.categoria}</span>
