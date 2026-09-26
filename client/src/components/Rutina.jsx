@@ -19,8 +19,8 @@ function Rutina({ momento, productos }) {
   const pasos = pasosDelMomento(productos, momento);
   const [marcados, setMarcados] = useState(() => leerMarcados());
 
-  // Si cambio de manana a noche, releo lo guardado: cada momento lleva su
-  // propia cuenta dentro del mismo dia.
+  // Si cambio de mañana a noche, releo lo guardado: cada momento lleva su
+  // propia cuenta dentro del mismo día.
   useEffect(() => {
     setMarcados(leerMarcados());
   }, [momento]);

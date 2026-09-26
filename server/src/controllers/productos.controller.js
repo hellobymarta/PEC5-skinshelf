@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Producto = require('../models/Producto');
 
-// Los unicos campos que acepto del cliente. Sin esta lista, el req.body entero
-// llega al modelo y se puede colar un _id elegido a mano: lo comprobe mandando
-// "_id": "aaaa..." en un POST y el documento se creo con ese identificador.
+// Los únicos campos que acepto del cliente. Sin esta lista, el req.body entero
+// llega al modelo y se puede colar un _id elegido a mano: lo comprobé mandando
+// «_id»: «aaaa...» en un POST y el documento se creó con ese identificador.
 const CAMPOS_PERMITIDOS = [
   'nombre',
   'marca',

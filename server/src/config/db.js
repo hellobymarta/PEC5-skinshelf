@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-// En Vercel cada peticion puede despertar una funcion nueva. Si abriera una
-// conexion por peticion, el cluster se quedaria sin conexiones enseguida. Por
-// eso la guardo en una variable global: si ya esta abierta la reutilizo, y si
-// se esta abriendo espero a esa misma promesa en vez de abrir otra.
+// En Vercel cada petición puede despertar una función nueva. Si abriera una
+// conexión por petición, el cluster se quedaría sin conexiones enseguida. Por
+// eso la guardo en una variable global: si ya está abierta la reutilizo, y si
+// se está abriendo espero a esa misma promesa en vez de abrir otra.
 let cacheada = globalThis.__conexionSkinshelf;
 
 if (!cacheada) {

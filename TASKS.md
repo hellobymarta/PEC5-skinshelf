@@ -72,8 +72,8 @@ Estados: ⬜ pendiente · 🔄 en curso · ✅ hecho
 
 - ✅ `SKILLS.md` con los prompts realmente usados
 - ✅ `README.md`: descripción, instalación, uso de IA y prompts principales
-- ⬜ Reflexión final escrita a mano
-- ⬜ `TASKS.md` actualizado a su estado real
+- ✅ Reflexión final escrita
+- ✅ `TASKS.md` actualizado a su estado real
 - ✅ Repaso del historial de commits
 - ✅ Comprobar que `.env` no está en el repositorio
 - ⬜ Entrega en Google Classroom con las dos URLs y el enlace al repo

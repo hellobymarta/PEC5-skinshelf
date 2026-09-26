@@ -201,21 +201,27 @@ Los prompts completos y reutilizables están en **[`SKILLS.md`](./SKILLS.md)**. 
 
 **Qué fue más rápido gracias a la IA**
 
+Todo el esqueleto. El modelo, el controlador con las cinco operaciones, las rutas, los middlewares y los cuatro componentes de React salieron en una sesión, cuando a mano me habrían llevado días. Los archivos de prueba también. Lo que no fue más rápido fue entenderlo: leer y comprobar el código generado me llevó más tiempo que pedirlo, y esa parte no me la ahorró nadie.
 
 **Qué fue más difícil de controlar**
 
+Que la IA afirme cosas con total seguridad y estén mal. El caso más claro fue el del CORS. Me dijo que si faltaba la variable `CORS_ORIGIN` la API quedaba abierta a cualquier origen, y sonaba convincente. Lo comprobé con `curl` y no aparecía ninguna cabecera. Mirando el código del paquete `cors` se veía que con el origen vacío el middleware se salta entero, así que el riesgo real era el contrario: el frontend desplegado quedaría bloqueado. A partir de ahí dejé de dar por buena una explicación solo porque estuviera bien argumentada.
 
 **Qué errores aparecieron en el código generado**
 
+Los tengo todos anotados en la tabla de arriba. Los tres que me parecen más importantes: el controlador pasaba el `req.body` entero al modelo, y mandando un POST con un `_id` inventado el documento se creó con ese identificador; el servicio del frontend llamaba a `respuesta.json()` antes de comprobar si la respuesta había ido bien, así que con una página de error salía «Unexpected token '<'» en vez de un mensaje útil; y el listado enseñaba a la vez el error y el mensaje de «aún no hay productos», que se contradicen. Este último no lo detectó ninguna herramienta, lo vi yo mirando la pantalla mientras probaba otra cosa.
 
 **Qué tuve que modificar**
 
+Por seguridad, añadí una lista de campos permitidos para que el cuerpo de la petición no llegue entero al modelo. Por claridad, cambié cómo se lee la respuesta en el frontend y quité la contradicción del listado. Y por decisión mía cambié el despliegue: el plan decía Render y acabé en Vercel, lo que obligó a convertir el backend en función serverless y a cachear la conexión con Atlas.
 
 **Qué entendí mejor al revisar el código**
 
+Tres cosas que no habría entendido leyendo un tutorial. Que Mongoose descarta en silencio los campos que no están en el esquema, que es por lo que el campo de la foto no se guardaba hasta reiniciar el servidor y no daba ningún error. Que el CORS no protege la API sino al navegador, y por eso `curl` recibía los datos igualmente mientras la web quedaba bloqueada. Y que en serverless no hay un proceso encendido, así que la conexión a la base de datos hay que abrirla en la primera petición y guardarla.
 
-**¿Volvería a usar IA para una app similar? ¿Por qué?**
+**¿Volvería a usar IA para una aplicación similar? ¿Por qué?**
 
+Sí, pero sabiendo para qué. Para escribir código repetitivo y para explicarme cosas va muy bien. Para decidir la arquitectura o para dar algo por bueno sin probarlo, no. Lo que cambiaría la próxima vez es pedir menos y comprobar antes: casi todos los fallos que encontré salieron de probar un caso que debía fallar, no de leer el código. Y desconfiar especialmente de las respuestas que suenan más seguras.
 
 ---
 

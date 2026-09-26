@@ -1,6 +1,6 @@
-// El orden en el que se aplican los productos. Lo deduzco de la categoria, asi
+// El orden en el que se aplican los productos. Lo deduzco de la categoría, así
 // no hace falta un campo nuevo en la base de datos: el que va primero es el que
-// tiene menos indice en esta lista.
+// tiene menos índice en esta lista.
 export const ORDEN_PASOS = [
   'limpiador',
   'tonico',
@@ -17,8 +17,8 @@ export const MOMENTOS = {
 };
 
 // Los productos de un momento, ya ordenados. Fuera los terminados (no se pueden
-// usar) y fuera el protector solar por la noche, aunque este marcado como
-// "ambos": de noche no se aplica.
+// usar) y fuera el protector solar por la noche, aunque esté marcado como
+// «ambos»: de noche no se aplica.
 export const pasosDelMomento = (productos, clave) => {
   const valor = MOMENTOS[clave].valor;
 
@@ -33,8 +33,8 @@ export const pasosDelMomento = (productos, clave) => {
 };
 
 // Lo que llevo hecho hoy. Va en el navegador y no en Mongo porque es un dato del
-// dia, no del producto: manana la rutina vuelve a empezar de cero. La clave
-// incluye la fecha, asi que se reinicia sola al cambiar el dia.
+// día, no del producto: mañana la rutina vuelve a empezar de cero. La clave
+// incluye la fecha, así que se reinicia sola al cambiar el día.
 const claveDeHoy = () => `skinshelf-rutina-${new Date().toISOString().slice(0, 10)}`;
 
 export const leerMarcados = () => {

@@ -1,9 +1,9 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
 // Leo el cuerpo como texto y luego intento convertirlo, en vez de llamar a
-// respuesta.json() directamente. Si quien contesta no es mi API (por ejemplo la
-// pagina de error de Render mientras el servicio despierta), lo que llega es
-// HTML: con .json() saltaba un "Unexpected token '<'" que no dice nada.
+// respuesta.json() directamente. Si quien contesta no es mi API (por ejemplo una
+// página de error del servidor), lo que llega es HTML: con .json() saltaba un
+// «Unexpected token '<'» que no dice nada.
 const manejarRespuesta = async (respuesta) => {
   const texto = await respuesta.text();
 

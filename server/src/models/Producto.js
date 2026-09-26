@@ -67,8 +67,8 @@ const productoSchema = new mongoose.Schema(
       trim: true,
       maxlength: [300, 'Las notas no pueden superar los 300 caracteres'],
     },
-    // Solo el nombre del archivo, por ejemplo "collagen-jelly-cream.jpg". La
-    // imagen vive en client/public/fotos: aqui no se sube nada, que exigiria
+    // Solo el nombre del archivo, por ejemplo «collagen-jelly-cream.jpg». La
+    // imagen vive en client/public/fotos: aquí no se sube nada, que exigiría
     // almacenamiento externo.
     foto: {
       type: String,

@@ -5,8 +5,8 @@ const conectarDB = require('./config/db');
 
 const PORT = process.env.PORT || 4000;
 
-// Solo para trabajar en local. En Vercel no se ejecuta: alli la entrada es
-// api/index.js, que exporta la aplicacion como funcion.
+// Solo para trabajar en local. En Vercel no se ejecuta: allí la entrada es
+// api/index.js, que exporta la aplicación como función.
 conectarDB()
   .then(() => {
     app.listen(PORT, () => {

@@ -37,7 +37,7 @@ function App() {
   const [productoEditando, setProductoEditando] = useState(null);
 
   // Los filtros son de la vista de inventario. En las rutinas pido la lista
-  // entera, porque ahi quien decide que se ve es el momento de uso.
+  // entera, porque ahí quien decide qué se ve es el momento de uso.
   const cargarProductos = async () => {
     setCargando(true);
     setError('');
@@ -185,8 +185,8 @@ function App() {
 
             {cargando && <p className="py-12 text-center text-sm text-suave">Cargando…</p>}
 
-            {/* Si la carga fallo no enseno el contenido: con la lista vacia
-                saldria un mensaje que contradice al del error. */}
+            {/* Si la carga falló no enseño el contenido: con la lista vacía
+                saldría un mensaje que contradice al del error. */}
             {!cargando && !error && vista === 'productos' && (
               <ProductoList
                 productos={productos}

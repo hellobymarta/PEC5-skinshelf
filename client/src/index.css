@@ -9,7 +9,7 @@
 }
 
 @layer components {
-  /* Etiqueta pequena en mayusculas, muy espaciada. */
+  /* Etiqueta pequeña en mayúsculas, muy espaciada. */
   .etiqueta {
     @apply text-[11px] uppercase tracking-[0.18em] text-suave;
   }
